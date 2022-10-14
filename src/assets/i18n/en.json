@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Shipping Tool"
+  },
+  "shipments": {
+    "open": "All open shipments",
+    "byCustomer": "All open shipments for {{customer}}",
+    "showCustomer": "Show Customer {{customer}}",
+    "add": "Add Shipment",
+    "create": "Create a new shipment",
+    "labels": {
+      "name": "Name: ",
+      "description": "Description: ",
+      "customer": "Customer: ",
+      "shipping_date": "Shipping Date: ",
+      "arrival_date": "Arrival Date: "
+    }
+  }
+}

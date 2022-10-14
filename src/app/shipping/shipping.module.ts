@@ -7,6 +7,7 @@ import { ShippingFilteredOverviewPageComponent } from './pages/shipping-filtered
 import { ShippingsRoutingModule } from './shipping-routing.module';
 import { ShipmentFormComponent } from './components/shipment-form/shipment-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    TranslateModule,
     ComponentsModule,
     ShippingsRoutingModule,
   ]

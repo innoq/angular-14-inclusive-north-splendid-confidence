@@ -1,7 +1,7 @@
 <da-card *ngFor="let shipment of shipments" [title]="shipment.name">
   <ul>
     <li>{{ shipment.customer }}</li>
-    <li>Shipping Date: {{ shipment.shippingDate | date }}</li>
-    <li>Planned arrival Date: {{ shipment.arrivalDate | date }}</li>
+    <li>{{ 'shipments.labels.shipping_date' | translate }}{{ shipment.shippingDate | date }}</li>
+    <li>{{ 'shipments.labels.arrival_date' | translate }}{{ shipment.arrivalDate | date }}</li>
   </ul>
 </da-card>

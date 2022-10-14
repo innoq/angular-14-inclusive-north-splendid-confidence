@@ -1,7 +1,7 @@
 <ng-container *ngIf="!showEditor; else editForm">
-  <h2>Open Shipments for {{ selectedCustomer }}</h2>
+  <h2>{{ 'shipments.byCustomer' | translate: {customer: selectedCustomer} }}</h2>
   <da-shipping-overview-list [shipments]="openShipments$ | async"></da-shipping-overview-list>
-  <da-button text="Add Shipment" (click)="onEdit()"></da-button>
+  <da-button text="{{'shipments.add' | translate}}" (click)="onEdit()"></da-button>
 </ng-container>
 <ng-template #editForm>
   <da-shipment-form [customer]="selectedCustomer" (shipmentSaved)="onShipmentSaved($event)"></da-shipment-form>

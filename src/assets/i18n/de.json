@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Versendungstool"
+  },
+  "shipments": {
+    "open": "Alle offenen Sendungen",
+    "byCustomer": "Alle offenen Sendungen von {{customer}}",
+    "showCustomer": "Kunde {{customer}} anzeigen",
+    "add": "Sendung hinzufügen",
+    "create": "Neue Sendung anlegen",
+    "labels": {
+      "name": "Name: ",
+      "description": "Beschreibung: ",
+      "customer": "Kunde: ",
+      "shipping_date": "Versanddatum: ",
+      "arrival_date": "Ankunftsdatum (gewünscht): "
+    }
+  }
+}

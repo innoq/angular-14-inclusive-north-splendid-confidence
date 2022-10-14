@@ -1,4 +1,4 @@
-<h2>All Open Shipments</h2>
+<h2>{{ 'shipments.open' | translate }}</h2>
 <da-shipping-overview-list [shipments]="openShipments$ | async"></da-shipping-overview-list>
-<da-button text="Show Customer Test" (click)="navigateTo('Test')"></da-button>
-<da-button text="Show Customer Test-2" (click)="navigateTo('Test-2')"></da-button>
+<da-button text="{{ 'shipments.showCustomer' | translate: {customer: 'Test'} }}" (click)="navigateTo('Test')"></da-button>
+<da-button text="{{ 'shipments.showCustomer' | translate: {customer: 'Test-2'} }}" (click)="navigateTo('Test-2')"></da-button>
