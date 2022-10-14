@@ -1,5 +1,16 @@
-:host {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.highlight {
+  border: 3px solid red;
+  background-color: yellow;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.padding {
+  padding: .5rem;
 }
