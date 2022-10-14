@@ -1,16 +1,5 @@
-.highlight {
-  border: 3px solid red;
-  background-color: yellow;
-}
-
-.bold {
-  font-weight: 600;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.padding {
-  padding: .5rem;
+:host {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
 }

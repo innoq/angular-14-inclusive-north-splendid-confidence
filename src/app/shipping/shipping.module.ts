@@ -14,9 +14,6 @@ import { ComponentsModule } from '../components/components.module';
   imports: [
     CommonModule,
     ComponentsModule,
-  ],
-  exports: [
-    ShippingOverviewPageComponent
   ]
 })
 export class ShippingModule { }

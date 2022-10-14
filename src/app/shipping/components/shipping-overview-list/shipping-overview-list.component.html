@@ -1,10 +1,7 @@
-<div class="card" *ngFor="let shipment of shipments">
-  <div class="card-header">{{ shipment.name }}</div>
-  <div class="card-body">
-    <ul>
-      <li>{{ shipment.customer }}</li>
-      <li>Shipping Date: {{ shipment.shippingDate | date }}</li>
-      <li>Planned arrival Date: {{ shipment.arrivalDate | date }}</li>
-    </ul>
-  </div>
-</div>
+<da-card *ngFor="let shipment of shipments" [title]="shipment.name">
+  <ul>
+    <li>{{ shipment.customer }}</li>
+    <li>Shipping Date: {{ shipment.shippingDate | date }}</li>
+    <li>Planned arrival Date: {{ shipment.arrivalDate | date }}</li>
+  </ul>
+</da-card>

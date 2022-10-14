@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Shipment } from '../../models/shipping.models';
+import { ShippingService } from '../../services/shipping.service';
 
 @Component({
   selector: 'da-shipping-overview-page',
@@ -6,6 +9,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./shipping-overview-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShippingOverviewPageComponent {
-  buttonType = 'reset';
+export class ShippingOverviewPageComponent implements OnInit {
+  openShipments$!: Observable<Shipment[]>;
+
+  constructor(public shippingService: ShippingService) {}
+
+  ngOnInit(): void {
+    this.openShipments$ = this.shippingService.getOpenShipments();
+  }
+
 }
