@@ -16,6 +16,7 @@ export class ShippingFilteredOverviewPageComponent implements OnInit, OnDestroy 
   selectedCustomer: string = '';
   openShipments$: Observable<Shipment[]>;
   destroyed$: Subject<boolean> = new Subject<boolean>;
+  showEditor: boolean = false;
 
   constructor(public activatedRoute: ActivatedRoute,
               public shippingService: ShippingService) { }
@@ -33,6 +34,18 @@ export class ShippingFilteredOverviewPageComponent implements OnInit, OnDestroy 
   ngOnDestroy(): void {
     this.destroyed$.next(true);
     this.destroyed$.complete();
+  }
+
+  onEdit(): void {
+    this.showEditor = !this.showEditor;
+  }
+
+  onShipmentSaved(saved: boolean) {
+    if (saved) {
+      this.openShipments$ = this.shippingService.getOpenShipmentsByCustomer(this.selectedCustomer);
+    }
+    // toggle the view back
+    this.showEditor = !this.showEditor;
   }
 
 }

@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   {
     path: ':name',
     component: ShippingFilteredOverviewPageComponent,
-  },
+  }
 ];
 
 @NgModule({

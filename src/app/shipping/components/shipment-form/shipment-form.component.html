@@ -1,0 +1,28 @@
+<h2>Create a new Shipment</h2>
+<form [formGroup]="form" (ngSubmit)="saveShipment()">
+  <div class="form-control">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" formControlName="name">
+  </div>
+  <div class="form-control">
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description" formControlName="description">
+  </div>
+  <div class="form-control">
+    <label for="customer">Customer:</label>
+    <input type="text" name="customer" id="customer" formControlName="customer">
+  </div>
+  <div class="form-control">
+    <label for="shippingDate">Shipping Date:</label>
+    <input type="date" name="shippingDate" id="shippingDate" formControlName="shippingDate">
+  </div>
+  <div class="form-control">
+    <label for="arrivalDate">Arrival Date:</label>
+    <input type="date" name="arrivalDate" id="arrivalDate" formControlName="arrivalDate">
+  </div>
+  <button type="submit">Save Shipment</button>
+  <button (click)="shipmentSaved.emit(false)">Cancel</button>
+</form>
+<ng-container *ngIf="form.invalid">
+  {{ form.errors | json }}
+</ng-container>

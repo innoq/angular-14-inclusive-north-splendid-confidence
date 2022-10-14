@@ -18,4 +18,8 @@ export class ShippingService {
   getOpenShipmentsByCustomer(customer: string): Observable<Shipment[]> {
     return this.http.get<Shipment[]>(ENDPOINTS.SHIPMENTS.shipmentsByCustomer(customer));
   }
+
+  createShipment(shipment: Shipment): Observable<void> {
+    return this.http.post<void>(ENDPOINTS.SHIPMENTS.createShipment(), shipment);
+  }
 }

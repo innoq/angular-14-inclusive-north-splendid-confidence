@@ -5,6 +5,8 @@ import { ShippingOverviewPageComponent } from './pages/shipping-overview-page/sh
 import { ComponentsModule } from '../components/components.module';
 import { ShippingFilteredOverviewPageComponent } from './pages/shipping-filtered-overview-page/shipping-filtered-overview-page.component';
 import { ShippingsRoutingModule } from './shipping-routing.module';
+import { ShipmentFormComponent } from './components/shipment-form/shipment-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,10 +14,12 @@ import { ShippingsRoutingModule } from './shipping-routing.module';
   declarations: [
     ShippingOverviewListComponent,
     ShippingOverviewPageComponent,
-    ShippingFilteredOverviewPageComponent
+    ShippingFilteredOverviewPageComponent,
+    ShipmentFormComponent,
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ComponentsModule,
     ShippingsRoutingModule,
   ]
