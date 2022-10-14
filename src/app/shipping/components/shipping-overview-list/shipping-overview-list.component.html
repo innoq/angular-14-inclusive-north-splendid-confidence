@@ -1,13 +1,10 @@
-<h2>{{ shipment.name }}</h2>
-<ul>
-  <li>{{ shipment.customer }}</li>
-  <li>Shipping Date: {{ shipment.shippingDate.toLocaleDateString() }}</li>
-  <li>{{ 'Planned Arrival Date:' + shipment.arrivalDate.toLocaleDateString() }}</li>
-</ul>
-<p>{{ 3 + content }}</p>
-<p>{{ 3 + numericContent }}</p>
-<img [src]="image.src" [alt]="image.description" [attr.width]="400" [attr.height]="400">
-
-<div [class.highlight]="isHighlighted">
-  <p [class]="'bold italic'">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus unde natus vero quia alias exercitationem? Praesentium, aliquid quis, facere in beatae, accusantium doloribus saepe assumenda laboriosam odio voluptas delectus! Ea?</p>
+<div class="card" *ngFor="let shipment of shipments">
+  <div class="card-header">{{ shipment.name }}</div>
+  <div class="card-body">
+    <ul>
+      <li>{{ shipment.customer }}</li>
+      <li>Shipping Date: {{ shipment.shippingDate | date }}</li>
+      <li>Planned arrival Date: {{ shipment.arrivalDate | date }}</li>
+    </ul>
+  </div>
 </div>
