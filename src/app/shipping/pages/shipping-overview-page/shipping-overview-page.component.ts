@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Shipment } from '../../models/shipping.models';
 import { ShippingService } from '../../services/shipping.service';
@@ -12,10 +13,16 @@ import { ShippingService } from '../../services/shipping.service';
 export class ShippingOverviewPageComponent implements OnInit {
   openShipments$!: Observable<Shipment[]>;
 
-  constructor(public shippingService: ShippingService) {}
+  constructor(public router: Router,
+              public activatedRoute: ActivatedRoute,
+              public shippingService: ShippingService,) {}
 
   ngOnInit(): void {
     this.openShipments$ = this.shippingService.getOpenShipments();
+  }
+
+  navigateTo(where: string): void {
+    this.router.navigate([where], { relativeTo: this.activatedRoute });
   }
 
 }
