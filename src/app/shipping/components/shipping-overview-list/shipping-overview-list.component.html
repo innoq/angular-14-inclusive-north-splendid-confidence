@@ -1,0 +1,17 @@
+<ng-container *ngIf="(openShippings$ | async) as shippings; else loading">
+  <da-card *ngFor="let shipping of shippings" [title]="shipping.name">
+    <dl>
+      <dt>Customer:</dt>
+      <dd>{{ shipping.customer }}</dd>
+      <dt>Description:</dt>
+      <dd>{{ shipping.description }}</dd>
+      <dt>Shipping Date</dt>
+      <dd>{{ shipping.shippingDate | date }}</dd>
+      <dt>Arrival Date</dt>
+      <dd>{{ shipping.arrivalDate | date }}</dd>
+    </dl>
+  </da-card>
+</ng-container>
+<ng-template #loading>
+  Data is loading...
+</ng-template>
