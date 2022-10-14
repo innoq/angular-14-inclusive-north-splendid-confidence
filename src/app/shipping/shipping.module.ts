@@ -9,8 +9,6 @@ import { ShipmentFormComponent } from './components/shipment-form/shipment-form.
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-
-
 @NgModule({
   declarations: [
     ShippingOverviewListComponent,
