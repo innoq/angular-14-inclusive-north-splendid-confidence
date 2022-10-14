@@ -1,7 +1,10 @@
-<da-card *ngFor="let shipment of shipments" [title]="shipment.name">
-  <ul>
-    <li>{{ shipment.customer }}</li>
-    <li>{{ 'shipments.labels.shipping_date' | translate }}{{ shipment.shippingDate | date }}</li>
-    <li>{{ 'shipments.labels.arrival_date' | translate }}{{ shipment.arrivalDate | date }}</li>
-  </ul>
-</da-card>
+<div class="shipment-list" cdkDropList (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal">
+  <da-card *ngFor="let shipment of shipments" [title]="shipment.name" cdkDrag>
+    <ul>
+      <li>{{ shipment.customer }}</li>
+      <li>{{ 'shipments.labels.shipping_date' | translate }}{{ shipment.shippingDate | date }}</li>
+      <li>{{ 'shipments.labels.arrival_date' | translate }}{{ shipment.arrivalDate | date }}</li>
+    </ul>
+    <div class="drag-custom-placeholder" *cdkDragPlaceholder></div>
+  </da-card>
+</div>

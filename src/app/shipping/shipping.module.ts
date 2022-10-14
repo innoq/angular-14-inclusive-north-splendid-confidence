@@ -8,6 +8,7 @@ import { ShippingsRoutingModule } from './shipping-routing.module';
 import { ShipmentFormComponent } from './components/shipment-form/shipment-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
+    DragDropModule,
     ComponentsModule,
     ShippingsRoutingModule,
   ]

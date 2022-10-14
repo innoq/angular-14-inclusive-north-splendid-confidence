@@ -1,5 +1,16 @@
-:host {
+.shipment-list {
   display: flex;
   gap: .5rem;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  da-card {
+    display: block;
+  }
+}
+
+.drag-custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 150px;
+  min-width: 150px;
+  display: block;
 }
