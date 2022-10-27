@@ -5,12 +5,12 @@ import { Shipment } from '../../models/shipping.models';
   selector: 'da-shipping-overview-list',
   templateUrl: './shipping-overview-list.component.html',
   styleUrls: ['./shipping-overview-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShippingOverviewListComponent implements OnChanges {
 
   @Input()
-  shipments!: Shipment[];
+  shipments!: Shipment[] | null;
 
   @Input()
   pageSize!: number;
@@ -18,14 +18,16 @@ export class ShippingOverviewListComponent implements OnChanges {
   @Output()
   shipmentLost: EventEmitter<Shipment> = new EventEmitter();
 
-  displayList!: Shipment[];
+  displayList!: Shipment[] | null;
 
   ngOnChanges(changes: SimpleChanges): void {
     const newLength = this.pageSize;
-    if (newLength <= this.shipments.length) {
-      this.displayList = this.shipments.slice(0, newLength);
-    } else {
-      this.displayList = this.shipments;
+    if (!!this.shipments) {
+      if (newLength <= this.shipments?.length) {
+        this.displayList = this.shipments?.slice(0, newLength);
+      } else {
+        this.displayList = this.shipments;
+      }
     }
   }
 

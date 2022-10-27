@@ -1,8 +1,13 @@
 <h2>Open Shipments</h2>
-<da-shipping-overview-list [shipments]="shipments"
-                           [pageSize]="size"
-                           (shipmentLost)="onShipmentLost($event)"
-                           ></da-shipping-overview-list>
+<ng-container *ngIf="shipments$ | async as shipments; else loading">
+  <da-shipping-overview-list [shipments]="shipments"
+                             [pageSize]="5"
+                             (shipmentLost)="onShipmentLost($event)"
+                             ></da-shipping-overview-list>
+</ng-container>
+<ng-template #loading>
+  Content is still loading...
+</ng-template>
 <da-button>Add <span style="font-style: italic;">another</span> Shipment</da-button>
 
 <h2>Recently completed Shipments</h2>
