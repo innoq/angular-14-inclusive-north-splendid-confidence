@@ -27,7 +27,8 @@ export class ShippingFilteredOverviewPageComponent implements OnInit, OnDestroy 
         this.openShipments$ = this.shippingService.getOpenShipmentsByCustomer(this.selectedCustomer);
       }),
       takeUntil(this.destroyed$)
-    ).subscribe();
+      ).subscribe();
+      // this.activatedRoute.snapshot.paramMap.
   }
 
   ngOnDestroy(): void {
