@@ -1,4 +1,5 @@
 export interface Shipment {
+  id: number;
   name: string;
   customer: string;
   description: string;

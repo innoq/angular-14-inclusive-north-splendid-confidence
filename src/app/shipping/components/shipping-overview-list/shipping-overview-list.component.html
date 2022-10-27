@@ -1,13 +1,19 @@
-<h2>{{ shipment.name }}</h2>
-<ul>
-  <li>{{ shipment.customer }}</li>
-  <li>Shipping Date: {{ shipment.shippingDate.toLocaleDateString() }}</li>
-  <li>{{ 'Planned Arrival Date:' + shipment.arrivalDate.toLocaleDateString() }}</li>
-</ul>
-<p>{{ 3 + content }}</p>
-<p>{{ 3 + numericContent }}</p>
-<img [src]="image.src" [alt]="image.description" [attr.width]="400" [attr.height]="400">
-
-<div [class.highlight]="isHighlighted">
-  <p [class]="'bold italic'">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus unde natus vero quia alias exercitationem? Praesentium, aliquid quis, facere in beatae, accusantium doloribus saepe assumenda laboriosam odio voluptas delectus! Ea?</p>
-</div>
+<ng-container *ngFor="let shipment of shipments; let i = index; trackBy: trackShipments">
+  <!-- <div *ngIf="shipment.customer === 'Test'; else nonTestShipment">
+    <h2>{{i}} {{ shipment.name }}</h2>
+    <ul>
+      <li>{{ shipment.customer | shorten: 3 }}</li>
+      <li>Shipping Date: {{ shipment.shippingDate | date: 'short' }}</li>
+      <li>{{ 'Planned Arrival Date:' + (shipment.arrivalDate | date) }}</li>
+    </ul>
+  </div>
+  <ng-template #nonTestShipment>
+    <p>One Shipment that does not belong to test</p>
+  </ng-template> -->
+  <ng-container [ngSwitch]="shipment.customer">
+    <div *ngSwitchCase="'Test'">Test Shipment</div>
+    <div *ngSwitchCase="'Best'">Best Shipment</div>
+    <div *ngSwitchCase="'Test-2'">Test-2 Shipment</div>
+    <div *ngSwitchDefault>Default</div>
+  </ng-container>
+</ng-container>

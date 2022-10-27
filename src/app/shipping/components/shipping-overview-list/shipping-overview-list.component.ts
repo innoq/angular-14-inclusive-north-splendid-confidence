@@ -8,18 +8,15 @@ import { Shipment } from '../../models/shipping.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShippingOverviewListComponent {
-  shipment: Shipment = { name: 'Shipment-1', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-05'), arrivalDate: new Date('2022-10-18') };
-  content = 'Content';
-  numericContent= 3;
-  image = { src: 'https://placekitten.com/400/400', description: 'Picture of a Kitten'};
-  isHighlighted = false;
-  classes = ['bold', 'italic'];
+  shipments: Shipment[] = [
+    { id: 1, name: 'Shipment-1', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-05'), arrivalDate: new Date('2022-10-18') },
+    { id: 2, name: 'Shipment-2', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-06'), arrivalDate: new Date('2022-10-19') },
+    { id: 3, name: 'Shipment-3', customer: 'Best', description: 'Test Shipment', shippingDate: new Date('2022-10-07'), arrivalDate: new Date('2022-10-20') },
+    { id: 4, name: 'Shipment-4', customer: 'Best', description: 'Test Shipment', shippingDate: new Date('2022-10-12'), arrivalDate: new Date('2022-10-21') },
+    { id: 5, name: 'Shipment-5', customer: 'Test-2', description: 'Test Shipment', shippingDate: new Date('2022-10-09'), arrivalDate: new Date('2022-10-22') },
+    { id: 6, name: 'Shipment-6', customer: 'Test-3', description: 'Test Shipment', shippingDate: new Date('2022-10-09'), arrivalDate: new Date('2022-10-22') },
+  ];
 
-  classesForElement() {
-    return {
-      bold: true,
-      italic: Date.now()%2 === 0,
-      padding: true,
-    }
-  }
+  trackShipments(index: number, item: Shipment): string { return item.name; }
+
 }
