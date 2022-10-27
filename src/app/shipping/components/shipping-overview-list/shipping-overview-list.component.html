@@ -1,10 +1,4 @@
-<div class="card" *ngFor="let shipment of shipments">
-  <div class="card-header">{{ shipment.name }}</div>
-  <div class="card-body">
-    <ul>
-      <li>{{ shipment.customer }}</li>
-      <li>Shipping Date: {{ shipment.shippingDate | date }}</li>
-      <li>Planned arrival Date: {{ shipment.arrivalDate | date }}</li>
-    </ul>
-  </div>
-</div>
+<da-shipment-detail *ngFor="let shipment of displayList"
+                    [shipment]="shipment"
+                    (shipmentLost)="onShipmentLost($event)">
+</da-shipment-detail>

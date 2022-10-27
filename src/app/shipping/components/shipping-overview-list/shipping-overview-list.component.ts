@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Shipment } from '../../models/shipping.models';
 
 @Component({
@@ -7,16 +7,29 @@ import { Shipment } from '../../models/shipping.models';
   styleUrls: ['./shipping-overview-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShippingOverviewListComponent implements OnInit {
+export class ShippingOverviewListComponent implements OnChanges {
+
+  @Input()
   shipments!: Shipment[];
 
-  ngOnInit(): void {
-    this.shipments = [
-      { name: 'Shipment-1', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-05'), arrivalDate: new Date('2022-10-13') },
-      { name: 'Shipment-2', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-06'), arrivalDate: new Date('2022-10-14') },
-      { name: 'Shipment-3', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-07'), arrivalDate: new Date('2022-10-17') },
-      { name: 'Shipment-4', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-08'), arrivalDate: new Date('2022-10-18') },
-      { name: 'Shipment-5', customer: 'Test', description: 'Test Shipment', shippingDate: new Date('2022-10-09'), arrivalDate: new Date('2022-10-22') },
-    ]
+  @Input()
+  pageSize!: number;
+
+  @Output()
+  shipmentLost: EventEmitter<Shipment> = new EventEmitter();
+
+  displayList!: Shipment[];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const newLength = this.pageSize;
+    if (newLength <= this.shipments.length) {
+      this.displayList = this.shipments.slice(0, newLength);
+    } else {
+      this.displayList = this.shipments;
+    }
+  }
+
+  onShipmentLost(s: Shipment): void {
+    this.shipmentLost.emit(s);
   }
 }

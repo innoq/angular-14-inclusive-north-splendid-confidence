@@ -1,3 +1,9 @@
 <h2>Open Shipments</h2>
-<da-shipping-overview-list></da-shipping-overview-list>
-<button type="{{ buttonType }}">Das sollte ein reset Button sein</button>
+<da-shipping-overview-list [shipments]="shipments"
+                           [pageSize]="size"
+                           (shipmentLost)="onShipmentLost($event)"
+                           ></da-shipping-overview-list>
+<da-button>Add <span style="font-style: italic;">another</span> Shipment</da-button>
+
+<h2>Recently completed Shipments</h2>
+<da-shipping-overview-list [shipments]="doneShipments" [pageSize]="3"></da-shipping-overview-list>
