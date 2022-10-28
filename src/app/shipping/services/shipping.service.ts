@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { ENDPOINTS } from 'src/app/endpoints';
 import { Shipment } from '../models/shipping.models';
 
@@ -20,6 +20,8 @@ export class ShippingService {
   }
 
   createShipment(shipment: Shipment): Observable<void> {
-    return this.http.post<void>(ENDPOINTS.SHIPMENTS.createShipment(), shipment);
+    return this.http.post<void>(ENDPOINTS.SHIPMENTS.createShipment(), shipment).pipe(
+      catchError((e) => { throw e }),
+    );
   }
 }

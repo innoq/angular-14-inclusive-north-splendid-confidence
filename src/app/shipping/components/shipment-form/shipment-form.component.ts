@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { catchError, finalize, Subject, takeUntil } from 'rxjs';
 import { Shipment } from '../../models/shipping.models';
 import { ShippingService } from '../../services/shipping.service';
@@ -26,12 +26,15 @@ export class ShipmentFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required, Validators.minLength(15)]),
+      description: new FormControl('', [Validators.required]),
       customer: new FormControl({ value: this.customer, disabled: true }),
-      shippingDate: new FormControl('', Validators.required),
-      arrivalDate: new FormControl('', Validators.required),
-    }, this.checkDates);
+      shippingDate: new FormControl('', [Validators.required]),
+      arrivalDate: new FormControl('', [Validators.required]),
+    }, [this.checkDates]);
+    this.form.patchValue({
+      name: 'Guten Morgen'
+    });
   }
 
   ngOnDestroy(): void {
@@ -50,6 +53,9 @@ export class ShipmentFormComponent implements OnInit, OnDestroy {
   }
 
   saveShipment(): void {
+
+    console.log('👀', this.form.value);
+
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -59,6 +65,12 @@ export class ShipmentFormComponent implements OnInit, OnDestroy {
       ...this.form.value,
       customer: this.customer,
     };
+
+    const arr = ['1','2'];
+    const arr2 = ['3'];
+
+    arr.concat(arr2);
+    const arr3 = [...arr2, ...arr];
 
     this.shippingService.createShipment(shipment).pipe(
       finalize(() => this.shipmentSaved.emit(true)),

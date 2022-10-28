@@ -1,9 +1,19 @@
 <h2>Create a new Shipment</h2>
 <form [formGroup]="form" (ngSubmit)="saveShipment()">
+
   <div class="form-control">
     <label for="name">Name: </label>
     <input type="text" name="name" id="name" formControlName="name">
   </div>
+  <div *ngIf="form.get('name').touched && form.get('name').hasError('required')">
+    Field is required
+  </div>
+  <div *ngIf="form.get('name').touched && form.get('name').hasError('minlength')">
+    Value is too short
+  </div>
+
+
+
   <div class="form-control">
     <label for="description">Description:</label>
     <input type="text" name="description" id="description" formControlName="description">
@@ -23,6 +33,6 @@
   <button type="submit">Save Shipment</button>
   <button (click)="shipmentSaved.emit(false)">Cancel</button>
 </form>
-<ng-container *ngIf="form.invalid">
+<ng-container>
   {{ form.errors | json }}
 </ng-container>
