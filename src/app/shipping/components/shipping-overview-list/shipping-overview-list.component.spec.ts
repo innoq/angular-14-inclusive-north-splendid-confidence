@@ -19,6 +19,12 @@ describe("Shipping Overview List", () => {
     );
   });
 
+  it("shows no card when there is no shipments", async () => {
+    const { find } = await shallow.render();
+    expect(find("da-card").length).toBe(0);
+  });
+
+
   it("shows as many cards as shipments", async () => {
     const { find } = await shallow.render({ bind: { shipments }});
     expect(find("da-card").length).toBe(1);

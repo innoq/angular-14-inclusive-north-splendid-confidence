@@ -1,10 +1,10 @@
 {
   "app": {
-    "title": "Versendungstool"
+    "title": "Versendungstool 🙃"
   },
   "shipments": {
     "open": "Alle offenen Sendungen",
-    "byCustomer": "Alle offenen Sendungen von {{customer}}",
+    "byCustomer": "{{number}} offene Sendungen von {{customer}}",
     "showCustomer": "Kunde {{customer}} anzeigen",
     "add": "Sendung hinzufügen",
     "create": "Neue Sendung anlegen",

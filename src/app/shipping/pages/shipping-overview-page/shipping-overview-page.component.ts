@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Shipment } from '../../models/shipping.models';
 import { ShippingService } from '../../services/shipping.service';
@@ -15,7 +16,8 @@ export class ShippingOverviewPageComponent implements OnInit {
 
   constructor(public router: Router,
               public activatedRoute: ActivatedRoute,
-              public shippingService: ShippingService,) {}
+              public shippingService: ShippingService,
+              private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.openShipments$ = this.shippingService.getOpenShipments();
@@ -23,6 +25,14 @@ export class ShippingOverviewPageComponent implements OnInit {
 
   navigateTo(where: string): void {
     this.router.navigate([where], { relativeTo: this.activatedRoute });
+  }
+
+  switchLanguage(lang: string): void {
+    this.translateService.use(lang);
+  }
+
+  titleText(): string {
+    return this.translateService.instant('shipments.open');
   }
 
 }

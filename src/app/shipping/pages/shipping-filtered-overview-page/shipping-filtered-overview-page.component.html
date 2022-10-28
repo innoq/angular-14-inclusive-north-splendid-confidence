@@ -1,5 +1,5 @@
 <ng-container *ngIf="!showEditor; else editForm">
-  <h2>{{ 'shipments.byCustomer' | translate: {customer: selectedCustomer} }}</h2>
+  <h2>{{ 'shipments.byCustomer' | translate: {customer: selectedCustomer, number: 3} }}</h2>
   <da-shipping-overview-list [shipments]="openShipments$ | async"></da-shipping-overview-list>
   <da-button text="{{'shipments.add' | translate}}" (click)="onEdit()"></da-button>
 </ng-container>

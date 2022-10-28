@@ -2,3 +2,10 @@
 <da-shipping-overview-list [shipments]="openShipments$ | async"></da-shipping-overview-list>
 <da-button text="{{ 'shipments.showCustomer' | translate: {customer: 'Test'} }}" (click)="navigateTo('Test')"></da-button>
 <da-button text="{{ 'shipments.showCustomer' | translate: {customer: 'Test-2'} }}" (click)="navigateTo('Test-2')"></da-button>
+
+<div class="languages">
+  {{ titleText() }}
+  <a (click)="switchLanguage('de')">Deutsch</a>
+  <a (click)="switchLanguage('en')">English</a>
+  <a (click)="switchLanguage('fr')">Francais</a>
+</div>
